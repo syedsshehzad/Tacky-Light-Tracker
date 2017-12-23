@@ -1,0 +1,179 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+body {
+	background-color: #e0e0e0;
+	align-content: center;
+}
+
+.container-fluid {
+	padding:0;
+}
+
+.jumbotron {
+	background: url("./images/christmaslights.jpg")
+	no-repeat;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+	color: #ffffff;	
+	border-color: #1f6660;
+	height: 30vw;
+	background-position: 50% 25%;
+	margin: 0px;
+	border-radius: 0px;
+}
+
+.jumbotron #display {
+	font-size:6vw;
+	font-family: 'Sacramento', cursive;
+	text-align: center;
+	margin-top:10vw;
+}
+
+.jumbotron .lead {
+	font-family: 'Josefin Slab', serif;
+	font-size:4vw;
+	text-align:center;
+}
+
+.navbar-light {
+	background-color: #22525e;
+} 
+
+.navbar-brand {
+	font-family: 'Sacramento', cursive;
+	font-size: 32px;
+	color: #ffffff !important;
+}
+
+.nav-item {
+	margin: 10px;
+	border-radius: 4px;
+}
+
+.nav-link {
+	color: #e0e0e0 !important;
+}
+
+#map {
+	height: 100%;
+	width: 98%;
+	margin-left: 15px;
+	border: solid rgb(255,100,100) 4px;
+}
+
+#mapHeight {
+	min-height: 462px;
+	padding:0;
+}
+
+#floating-panel {
+    background-color: #22525e;
+    padding-top: 10px;
+    text-align: center;
+    font-family: 'Josefin Slab', serif !important;
+    line-height: 30px;
+}
+
+.footer {
+	padding:15px;
+	border-top-style: solid;
+	border-color:#87d9e5;
+	border-top-width: 5px;
+	background-color: #22525e;
+	font-size: 18px;
+	color: #ffffff;
+}
+
+#directions {
+	background-color: #4ea6ba;
+	color: #ffffff;
+    padding: 7px;
+    text-align: center;
+    line-height: 25px;
+    max-height: 470px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#from {
+	background-color: #4ea6ba;
+	color: #ffffff;
+}
+
+#to {
+	background-color: #4ea6ba;
+	color: #ffffff;
+}
+
+#step-by-step {
+	background-color: #E5E3DF;
+	color: black;
+}
+
+#copyright {
+    font-family: 'Josefin Slab', serif !important;
+    padding-top:5px;
+    max-height: 300px;
+}
+
+@media screen and (max-width: 870px) {
+
+	.jumbotron {
+		height: 40vw;
+	}
+
+	.jumbotron #display {
+		font-size:6vw;
+		margin-top:11vw;
+	}
+}
+
+
+@media screen and (max-width: 560px) {
+
+	#map {
+		width: 95%;
+	}
+
+	#directions {
+		margin-left: 15px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+
+	.jumbotron {
+		height: 40vw;
+	}
+
+	.jumbotron #display {
+		font-size:7vw;
+		margin-top:11vw;
+	}
+}
+
+
+#instructions, #warning {
+	color: #ffffff;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.label {
+	text-decoration: underline;
+	margin: 0px;
+}
+
+button, input {
+	margin: 5px 5px;
+}
+
+#geosubmit {
+	margin-right: 20px;
+}

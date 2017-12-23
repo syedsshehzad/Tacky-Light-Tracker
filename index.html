@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=1.0">
+    <meta charset="utf-8">
+
+	<title>Tacky Lights Tracker</title>
+	
+	<!-- Script Addons -->
+		<!-- jQuery -->
+		<script
+		  src="https://code.jquery.com/jquery-3.2.1.js"
+		  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+		  crossorigin="anonymous"></script>
+		<script 
+		  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+		  integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" 
+		  crossorigin="anonymous"></script>
+		<script 
+		  src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" 
+		  integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" 
+		  crossorigin="anonymous"></script>  
+  
+		<!-- Firebase -->
+		<script 
+		  src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+		<!-- MomentJS -->
+		<script 
+	      src="https://cdn.jsdelivr.net/npm/moment@2.19.3/moment.js"></script>
+	<!-- CSS -->
+		<!-- Bootstrap Framework -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<!-- Custom Sheet -->
+		<link rel="stylesheet" href="./assets/css/style.css">
+		<!-- Goolge Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Sacramento" rel="stylesheet">
+		<!--Animate.css-->
+		<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+		<!-- or -->
+		<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		<!--Font Awesome-->
+		<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+
+</head>
+<body>
+
+<!-- Container for Whole Page -->
+<div class="container-fluid">
+<!-- Navigation Bar -->
+	<nav class="navbar navbar-light sticky-top navbar-toggleable-md">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+  		</button>
+		<a class="navbar-brand" href="#">Tacky Light Tracker</a>
+		
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">	
+			<ul class="navbar-nav mr-auto">
+  				<li class="nav-item active">
+    				<a class="nav-link " href="#"><i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
+ 				 </li>
+ 			</ul>
+ 			<ul class="navbar-nav">	 
+  				<li class="nav-item">
+    				<a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+  				</li>       
+  				<li class="nav-item">
+    				<a class="nav-link" href="#"><i class="fas fa-user"></i> Sign Up</a>
+  				</li>
+			</ul>
+		</div>
+	</nav>	
+<!--Jumbotron-->	
+	<div class="jumbotron">
+		<h1 class="animated tada" id="display">Tacky Light Tracker</h1> 
+		<p class="lead">Rockin' around RVA</p> 
+	</div>
+
+<!-- MAIN SECTION -->
+	<div class="row" id="main">
+		<!-- MAP & GEOCODE -->
+		<div class="col-sm-6 col-md-6" id="mapHeight">
+			<div id="map"></div>
+		</div>
+		<div class="col-sm-6 col-md-6" id="directions">
+			<button id="getdirections">Get Directions</button>
+			<button id="planner">Plan Your Tacky Light Tour</button>
+			<br>
+			<button id="geolocate">Use Current Location</button>
+			<input id="custom" type="textbox" value="use custom address">
+			<input id="submit" type="button" value="Submit">
+			<br>
+			<p class="label">Origin: </p>
+			<div id="from"></div>
+			<p class="label">Destination: </p>
+			<div id="to"></div>
+			<div id="step-by-step"></div>
+			<div id="instructions"></div>
+			<div id="warning"></div>
+		</div>
+	</div>	
+	<div class="row">	
+		<div class="col-sm-6 col-md-6" id="floating-panel">
+			<input id="address" type="textbox" value="Add new address to map">
+			<input id="geosubmit" type="button" value="Plot">
+			<input id="center" type="button" onclick="centerMap()" value="Back to Center">
+		</div>
+		<div class="col-sm-6 col-md-6" id="floating-panel">
+			
+		</div>
+	</div>	
+</div> <!-- End of container -->
+<footer class="footer">
+    <div class="container-fluid">
+	<div class="row">
+		<!--WEATHER API-->
+		<div class="col-sm"></div>
+		<div class="col-sm text-center" id="weather"></div>
+		<div class="col-sm"></div>
+		<!-- SPOTIFY -->
+		<div class="col-sm" id="spotify">
+			<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX0A8zVl7p82B&theme=white" width="300" height="100" frameborder="0" allowtransparency="true"></iframe>
+		</div>
+		<div class="col-sm"></div>
+    </div>
+    <div class="row">
+    	<div class="col-sm text-center small align-self-end">©2017 John Blackwell, Brittany Gillespie, Olivia Garrett, Syed Shehzad</div>      
+    </div>
+</footer>
+<!-- Javascript -->
+	<script 
+	  src="./assets/javascript/logic.js"></script>
+<!-- Google Maps Call -->
+	<script async defer
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkUtokw3tHbQTwMkXpIapkw-us_Ln1RKE&callback=initMap">
+	</script>	  
+</body>
+</html>
